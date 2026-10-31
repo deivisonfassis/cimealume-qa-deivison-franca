@@ -73,6 +73,13 @@
 
     testar('AT-EX1', 'E-mail com @ e domínio é aceito', validarEmail('ana@exemplo.com'), true);
     testar('AT-EX2', 'Sessão 2D das 21:00 com 2 inteiras custa R$ 64,00', calcularIngressos(sessao('far-2100'), 2, 0, 32), 64);
+    testar('AT01', 'Sessão 14:00 custa R$ 24,00', precoBaseSessao(sessao('orb-1400')), 24);
+    testar('AT02', 'Sessão 21:00 custa R$ 32,00', precoBaseSessao(sessao('far-2100')), 32);
+    testar('AT03', '2 inteiras em sessão 3D 20:30 custam R$ 76,00', calcularIngressos(sessao('orb-2030'), 2, 0, 32), 76);
+    testar('AT04', 'Pré-estreia não aceita meia e cobra inteira', calcularIngressos(sessao('vid-2200'), 1, 1, 32), 38);
+    testar('AT05', '2 ingressos e 2 itens geram R$ 10,00 de taxa', calcularTaxa(2, 2), 10);
+    testar('AT06', 'PIPOCA5 recusado abaixo de R$ 25,00', calcularDescontoCupom('PIPOCA5', 32, 14).valido, false);
+    testar('AT07', 'CPF com menos de 10 dígitos é rejeitado', validarCPF('123456789'), false);
 
 
 
